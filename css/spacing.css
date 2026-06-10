@@ -1,0 +1,67 @@
+/* Digital Team — Spacing, radius, border, shadow, motion & effect tokens
+   The system is round and soft: pill buttons, 16–24px card radii, generous 96–112px section
+   rhythm. Depth comes from translucent panels over a navy field plus coral "glow" shadows —
+   not hard drop shadows. Two signature backdrops (aurora + grid) live here as ready CSS. */
+
+:root {
+  /* ---------- Spacing scale (4px base) ---------- */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;   /* mobile gutter (px-5) */
+  --space-6:  24px;
+  --space-7:  28px;   /* card padding */
+  --space-8:  32px;   /* desktop gutter (px-8) */
+  --space-9:  36px;
+  --space-10: 40px;
+  --space-14: 56px;   /* grid-texture cell / heading→grid gap */
+  --space-16: 64px;
+  --space-24: 96px;   /* section vertical padding (py-24) */
+  --space-28: 112px;  /* section vertical padding (py-28) */
+
+  /* ---------- Radii (the brand is round) ---------- */
+  --radius-sm:   8px;   /* logo glyph, small chips (rounded-lg) */
+  --radius-md:   12px;  /* icon tiles (rounded-xl) */
+  --radius-lg:   16px;  /* standard cards, stats (rounded-2xl) */
+  --radius-xl:   24px;  /* feature / price cards (rounded-3xl) */
+  --radius-pill: 999px; /* buttons, toggles, badges, sliders */
+
+  /* ---------- Borders ---------- */
+  --border-hairline: 1px solid var(--slate-line);   /* default card border */
+  --border-coral:    1px solid var(--coral-40);      /* highlighted card */
+  --border-steel:    1px solid var(--steel-40);      /* steel card */
+  --accent-rule:     2px;  /* left-accent on "in action" callouts */
+
+  /* ---------- Shadows & glows (sparing, coral-tinted) ---------- */
+  --shadow-none:    none;
+  --shadow-cta:     0 10px 30px -8px rgba(240,101,63,0.6);    /* coral button rest */
+  --shadow-cta-hi:  0 14px 40px -8px rgba(240,101,63,0.75);   /* coral button hover */
+  --shadow-glow:    0 0 0 1px rgba(240,101,63,0.4), 0 18px 50px -12px rgba(240,101,63,0.35);
+  --shadow-node:    0 0 60px -12px rgba(240,101,63,0.6);      /* hero "you" node halo */
+  --shadow-panel:   0 24px 60px -24px rgba(0,0,0,0.7);        /* lifted dark panel */
+  --shadow-price:   0 30px 80px -30px rgba(240,101,63,0.4);   /* highlighted price card */
+  --shadow-logo:    0 6px 16px -6px rgba(240,101,63,0.8);     /* coral logo glyph */
+
+  /* ---------- Layout ---------- */
+  --page-max:   1280px; /* max-w-7xl content width */
+  --reading-max: 672px; /* max-w-2xl heading measure */
+  --nav-h:      64px;
+
+  /* ---------- Motion ---------- */
+  --ease-out:   cubic-bezier(0.22, 1, 0.36, 1); /* signature reveal/flip ease */
+  --ease-std:   cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast:   0.15s;  /* hovers */
+  --dur-base:   0.3s;   /* CTAs, nav, colour shifts */
+  --dur-reveal: 0.6s;   /* scroll-in reveals */
+  --dur-flip:   0.65s;  /* card flip */
+  --lift:       translateY(-1px); /* hover lift on buttons/cards (-translate-y-0.5) */
+
+  /* ---------- Signature backdrops (drop onto a positioned layer) ---------- */
+  --bg-aurora:
+    radial-gradient(60% 50% at 15% 0%, rgba(240,101,63,0.16), transparent 60%),
+    radial-gradient(50% 50% at 90% 10%, rgba(111,147,189,0.14), transparent 55%),
+    radial-gradient(70% 60% at 50% 100%, rgba(240,101,63,0.08), transparent 60%);
+  --grid-line: rgba(255,255,255,0.04);  /* grid-texture stroke */
+  --grid-cell: 56px;
+}

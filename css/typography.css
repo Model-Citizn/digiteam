@@ -1,0 +1,58 @@
+/* Digital Team — Typography tokens
+   Two voices in dialogue:
+   · DISPLAY (Fraunces, serif) — every headline, worker name, price & big stat. Warm, optical, human.
+     Always set semibold (600) with tight tracking; the last word of a heading is coloured coral.
+   · UI (Geist, sans) — all body copy, labels, buttons, nav. Calm, neutral, legible.
+   Numbers in stat/price positions use Fraunces too — the brand treats figures as headlines. */
+
+:root {
+  /* ---------- Families ---------- */
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif; /* headings, names, prices */
+  --font-sans:    'Geist', ui-sans-serif, system-ui, -apple-system, sans-serif; /* UI & body */
+  --font-mono:    ui-monospace, 'SF Mono', Menlo, monospace; /* rare: code / tokens */
+
+  /* ---------- Weights ---------- */
+  --w-regular:  400;
+  --w-medium:   500;  /* body emphasis, labels, descriptive lines */
+  --w-semibold: 600;  /* the brand's default heading weight */
+  --w-bold:     700;  /* prices, step numerals, logo glyph */
+
+  /* ---------- Display scale (Fraunces) ---------- */
+  --size-hero:      72px; /* hero h1 (scales 48→60→72) */
+  --size-display:   60px; /* section h2 top size */
+  --size-h2:        48px; /* section heading mid */
+  --size-h2-sm:     36px; /* section heading base */
+  --size-descriptive: 30px; /* supporting line under heading (24→30) */
+  --size-price:     48px; /* pricing figure */
+  --size-stat:      36px; /* ROI stat figure */
+  --size-card-title: 24px; /* worker / card name */
+  --size-h3:        20px; /* sub-card title */
+
+  /* ---------- Text scale (Geist) ---------- */
+  --size-lead:  18px;  /* hero sub & section sub (text-lg) */
+  --size-body:  16px;  /* base body */
+  --size-ui:    14px;  /* default UI / card body (text-sm) */
+  --size-label: 12px;  /* eyebrows, pills, uppercase labels (text-xs) */
+  --size-meta:  11px;  /* micro-labels (in-action tag) */
+
+  /* ---------- Tracking ---------- */
+  --track-tight:  -0.02em; /* display headings (tracking-tight) */
+  --track-snug:   -0.01em;
+  --track-wide:    0.05em; /* uppercase labels (tracking-wider) */
+
+  /* ---------- Line heights ---------- */
+  --lh-hero:    1.05;  /* display headings */
+  --lh-snug:    1.2;   /* descriptive lines */
+  --lh-body:    1.6;   /* relaxed body copy */
+  --lh-ui:      1.5;
+
+  /* ================= SEMANTIC TYPE ROLES ================= */
+  --type-hero:        var(--w-semibold) var(--size-hero)/var(--lh-hero) var(--font-display);
+  --type-h2:          var(--w-semibold) var(--size-h2)/var(--lh-hero) var(--font-display);
+  --type-descriptive: var(--w-medium) var(--size-descriptive)/var(--lh-snug) var(--font-sans);
+  --type-card-title:  var(--w-semibold) var(--size-card-title)/1.15 var(--font-display);
+  --type-price:       var(--w-bold) var(--size-price)/1 var(--font-display);
+  --type-lead:        var(--w-regular) var(--size-lead)/var(--lh-body) var(--font-sans);
+  --type-body:        var(--w-regular) var(--size-ui)/var(--lh-body) var(--font-sans);
+  --type-label:       var(--w-medium) var(--size-label)/1 var(--font-sans);
+}

@@ -1,0 +1,64 @@
+/* Digital Team — Color tokens
+   A dark, premium identity: deep navy fields, a single warm coral accent that does all the
+   pointing, and a cool steel as its quieter partner. Text is a near-white "cloud" stepping down
+   to "mist". Base values first (named exactly as the product code names them), then semantic aliases.
+   color-scheme is dark — this system is dark-first. */
+
+:root {
+  color-scheme: dark;
+
+  /* ---------- Navy field (backgrounds → borders) ---------- */
+  --ink:        #0c1220;  /* deepest background — page floor, insets */
+  --navy:       #121a2e;  /* base background — the canvas */
+  --navy-700:   #19233b;  /* raised panels & cards */
+  --navy-600:   #223049;  /* panel hover / inner borders / step numerals */
+  --slate-line: #2c3a55;  /* hairline borders & dividers */
+
+  /* ---------- Coral — the one accent ---------- */
+  --coral:        #f0653f;  /* primary accent: CTAs, links, key words, icons */
+  --coral-bright: #ff7a52;  /* hover / lifted */
+  --coral-dim:    #c44e2e;  /* pressed / scrollbar thumb */
+
+  /* ---------- Steel — the quiet second ---------- */
+  --steel:     #6f93bd;  /* secondary accent: alternate workers, supporting icons */
+  --steel-dim: #2f4663;  /* steel borders / faint fills */
+
+  /* ---------- Text on dark ---------- */
+  --cloud:    #eef2f8;  /* primary text — headings & emphasis */
+  --mist:     #aab6cc;  /* body / muted text */
+  --mist-dim: #7e8aa3;  /* captions, meta, placeholder */
+  --white:    #ffffff;  /* text on coral */
+
+  /* ---------- Translucent accent washes ---------- */
+  --coral-10:  rgba(240,101,63,0.10); /* icon-chip fill */
+  --coral-15:  rgba(240,101,63,0.15); /* highlighted gradient stop */
+  --coral-25:  rgba(240,101,63,0.25); /* faint number watermark */
+  --coral-40:  rgba(240,101,63,0.40); /* card ring / border */
+  --steel-10:  rgba(111,147,189,0.10);
+  --steel-25:  rgba(111,147,189,0.25);
+  --steel-40:  rgba(111,147,189,0.40);
+
+  /* ================= SEMANTIC ALIASES ================= */
+  /* Surfaces */
+  --surface-page:    var(--navy);      /* app / page canvas */
+  --surface-floor:   var(--ink);       /* deepest band (pricing, footer) */
+  --surface-panel:   var(--navy-700);  /* cards & raised panels */
+  --surface-raised:  var(--navy-600);  /* hover / gradient top */
+  --border-hairline: var(--slate-line);/* default 1px border */
+
+  /* Accents */
+  --accent:        var(--coral);
+  --accent-hover:  var(--coral-bright);
+  --accent-press:  var(--coral-dim);
+  --accent-2:      var(--steel);
+
+  /* Text */
+  --text-strong: var(--cloud);   /* headings, emphasised body */
+  --text-body:   var(--mist);    /* paragraphs */
+  --text-muted:  var(--mist-dim);/* captions, meta, labels */
+  --text-on-accent: var(--white);
+
+  /* Worker accent tokens (coral = highlighted, steel = standard) */
+  --worker-coral: var(--coral);
+  --worker-steel: var(--steel);
+}

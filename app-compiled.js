@@ -7,6 +7,23 @@ const {
   useContext
 } = React;
 
+/* ── Security: URL sanitizers ─────────────────────────────
+   Tweak-editable values end up in href attributes. Only https:
+   URLs (and well-formed mailto addresses) are allowed through;
+   anything else (javascript:, data:, malformed) falls back to "#". */
+function dtSafeHttpsUrl(u) {
+  try {
+    const p = new URL(String(u).trim());
+    return p.protocol === "https:" ? p.href : "#";
+  } catch (e) {
+    return "#";
+  }
+}
+function dtSafeMailto(e) {
+  const s = String(e || "").trim();
+  return /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(s) ? "mailto:" + s : "#";
+}
+
 /* ── Inline icon library (Lucide SVG paths, no CDN needed) ── */
 const _i = h => ({
   className,
@@ -60,18 +77,18 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "email": "lance@modelcitizn.com",
   "calendlyUrl": "https://www.calendly.com/model_citizn",
   "stripeUrl": "https://buy.stripe.com/3cIbJ3czB8f1gRC9TY6Ri00",
-  "totalPrice": "$3,000 (excl GST)",
-  "setupPrice": "$2,500 (excl GST)",
+  "totalPrice": "$3,500 (excl GST)",
+  "setupPrice": "$3,000 (excl GST)",
   "maintenancePrice": "$500 (excl GST)",
   "maintenanceCadence": "for 2 months support · billed after month 1",
   "defaultAudience": "consultant",
   "heroTagline": "6 AI workers · setup in 2–3 weeks · pays for itself in under a month",
-  "pricingNote": "Most people earn back the full $3,000 (excl GST) in the first month after the 3-month total project ends — from there, the time it saves is pure upside. The Claude subscription (Pro or Max) is separate; we'll help you pick the right plan."
+  "pricingNote": "Most people earn back the full $3,500 (excl GST) in the first month after the 3-month total project ends — from there, the time it saves is pure upside. The Claude subscription (Pro or Max) is separate; we'll help you pick the right plan."
 } /*EDITMODE-END*/;
 
 /* ── Static data ─────────────────────────────────────────── */
 const ROI = {
-  totalCost: 3000,
+  totalCost: 3500,
   defaultHourlyRate: 150,
   minHourlyRate: 75,
   maxHourlyRate: 400,
@@ -345,7 +362,7 @@ function BookButton({
     calendlyUrl
   } = useApp();
   return /*#__PURE__*/React.createElement("a", {
-    href: calendlyUrl,
+    href: dtSafeHttpsUrl(calendlyUrl),
     target: "_blank",
     rel: "noopener noreferrer",
     className: `inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 ${className}`,
@@ -365,7 +382,7 @@ function BuyButton({
     stripeUrl
   } = useApp();
   return /*#__PURE__*/React.createElement("a", {
-    href: stripeUrl,
+    href: dtSafeHttpsUrl(stripeUrl),
     target: "_blank",
     rel: "noopener noreferrer",
     className: `group inline-flex items-center justify-center gap-2 rounded-full border px-6 py-3.5 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 ${className}`,
@@ -1257,7 +1274,7 @@ function RoiCalculator() {
   }), /*#__PURE__*/React.createElement(StatCard, {
     icon: Clock3,
     big: paybackLabel,
-    label: "Of reclaimed time to cover the full $3,000"
+    label: "Of reclaimed time to cover the full $3,500"
   }), /*#__PURE__*/React.createElement("div", {
     className: "flex flex-col justify-between rounded-2xl border p-6",
     style: {
@@ -1275,7 +1292,7 @@ function RoiCalculator() {
     style: {
       color: "var(--accent)"
     }
-  }, "$3,000"), " all-in. After that, the time it gives back is yours."), /*#__PURE__*/React.createElement(BookButton, {
+  }, "$3,500"), " all-in. After that, the time it gives back is yours."), /*#__PURE__*/React.createElement(BookButton, {
     className: "mt-4 w-full",
     label: "Book a call"
   }))))));
@@ -1647,7 +1664,7 @@ function SiteFooter() {
   }, /*#__PURE__*/React.createElement(DigiLogoIcon, {
     height: 28
   }), /*#__PURE__*/React.createElement(BrandLogo, null)), /*#__PURE__*/React.createElement("a", {
-    href: `mailto:${email}`,
+    href: dtSafeMailto(email),
     className: "inline-flex items-center gap-2 text-sm transition-colors hover:text-white",
     style: {
       color: "#aab6cc"
